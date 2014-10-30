@@ -52,5 +52,4 @@ export DISPLAY=:99
 # sudo apt-get install xorg xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
 
 ### FUSE REQUIREMENTS ###
-sudo apt-get install libgtk2.0-0 libgtkmm-2.4-1 libnotify-bin
-
+sudo apt-get install libgtk2.0-0 libgtkmm-2.4-1 libnotify-bin memcached

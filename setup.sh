@@ -22,7 +22,7 @@ sudo apt-get install curl build-essential openssl libreadline6 libreadline6-dev 
 
 
 # RVM
-curl -sSL https://get.rvm.io | bash -s stable
+curl -L https://get.rvm.io | bash -s stable
 rvm install 2.1.2
 
 # Paste to the end of .bashrc

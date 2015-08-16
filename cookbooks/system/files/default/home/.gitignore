@@ -1,0 +1,11 @@
+# screen logs
+screenlog.*
+.screenlog*
+
+
+# ctags
+.tag*
+
+# Sublime files
+*.sublime-*
+

@@ -1,0 +1,8 @@
+include_recipe 'system::upgrade'
+include_recipe 'system::libs'
+include_recipe 'system::configs'
+include_recipe 'system::locale'
+include_recipe 'system::ssh'
+include_recipe 'system::my_bin'
+include_recipe 'system::zsh'
+include_recipe 'system::vim'

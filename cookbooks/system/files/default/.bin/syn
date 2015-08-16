@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# defaults
+out_sync=false
+def_param='aPh'
+
+if [[ "$1" == "-o" ]]; then
+  source_dir=$2
+  out_sync=true
+elif [[ "$1" == "-" ]]; then
+  def_param='ah'
+else
+  source_from="./$1/"
+  source_to="/$1"
+fi
+
+rsync_prj='fusetube'
+rsync_base=$HOME
+rsync_dup="$HOME/projects"
+rsync_opt='
+  -aPh
+  --delete
+  --exclude vendor/assets/bower_components
+  --exclude log/*.*
+  --exclude solr/data
+  --exclude solr/pids
+  --exclude app/assets/stylesheets/companies/*
+  --exclude tmp/**
+  --exclude *.sqlite3
+  --exclude :memory*
+  --exclude /.idea
+  --exclude coverage/**
+  --exclude public/system/**
+  --exclude public/assets/**
+  --exclude .screenlog.*
+  --exclude .tag*
+'
+
+if [[ $out_sync == true ]]; then
+  from="${rsync_dup}/${rsync_prj}"
+  to="$rsync_base"
+else
+  from="${rsync_base}/${rsync_prj}/${source_from}"
+  to="$rsync_dup/$rsync_prj${source_to}"
+  perm='--no-p --no-g --chmod=ugo=rwX'
+fi
+
+unset out_sync;
+
+rsync -$def_param $perm --delete --exclude 'vendor/assets/bower_components' --exclude 'log/*.*' --exclude 'solr/data' --exclude 'solr/pids' --exclude 'app/assets/stylesheets/companies/*' --exclude 'tmp/**' --exclude '*.sqlite3' --exclude ':memory*' --exclude '/.idea' --exclude 'coverage/**' --exclude 'public/system/**' --exclude 'public/assets/**' --exclude '.screenlog.*' --exclude '.tag*' $from $to
+

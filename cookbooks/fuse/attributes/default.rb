@@ -13,7 +13,7 @@ default[:fuse][:packages] = %w(
   libmagic-dev
   libqt5webkit5 libqt5webkit5-dev
   mysql-server
-  nodejs
+  nodejs nodejs-legacy
   npm
   imagemagick
   memcached

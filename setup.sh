@@ -53,3 +53,7 @@ export DISPLAY=:99
 
 ### FUSE REQUIREMENTS ###
 sudo apt-get install libgtk2.0-0 libgtkmm-2.4-1 libnotify-bin memcached
+
+sudo apt-get install gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x \
+  libfontconfig1-dev libfreetype6-dev libx11-dev libxcursor-dev libxext-dev libxfixes-dev \
+  libxft-dev libxi-dev libxrandr-dev libxrender-dev

@@ -24,4 +24,8 @@ default[:fuse][:packages] = %w(
   libgtk2.0-0
   libgtkmm-2.4-1
   libnotify-bin
+
+  gstreamer1.0-plugins-base
+  gstreamer1.0-tools
+  gstreamer1.0-x
 )

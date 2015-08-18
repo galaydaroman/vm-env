@@ -50,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.name = 'vm-fuse-env'
     vb.cpus = 4
-    vb.memory = 3300
+    vb.memory = 4100
 
     # Don't boot with headless mode
     # vb.gui = true

@@ -47,5 +47,5 @@ fi
 
 unset out_sync;
 
-rsync -$def_param $perm --delete --exclude 'vendor/assets/bower_components' --exclude 'log/*.*' --exclude 'solr/data' --exclude 'solr/pids' --exclude 'app/assets/stylesheets/companies/*' --exclude 'tmp/**' --exclude '*.sqlite3' --exclude ':memory*' --exclude '/.idea' --exclude 'coverage/**' --exclude 'public/system/**' --exclude 'public/assets/**' --exclude '.screenlog.*' --exclude '.tag*' $from $to
+rsync -$def_param $perm --delete --exclude '/screenlog.*' --exclude 'vendor/assets/bower_components' --exclude 'log/*.*' --exclude 'images/reflective-*.png' --exclude 'icons/content-*.png' --exclude 'icons/transparent-content-*.png' --exclude 'icons/colour-content-*.png'  --exclude 'solr/data' --exclude 'solr/pids' --exclude 'companies/201*.css.scss' --exclude 'tmp/**' --exclude '*.sqlite3' --exclude ':memory*' --exclude '/.idea' --exclude 'coverage/**' --exclude 'public/system/**' --exclude 'public/assets/**' --exclude '.screenlog.*' --exclude '.tag*' $from $to
 

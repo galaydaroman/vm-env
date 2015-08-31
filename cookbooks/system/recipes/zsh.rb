@@ -25,6 +25,5 @@ cookbook_file "/home/#{user}/.oh-my-zsh/themes/af-magic2.zsh-theme" do
 end
 
 execute 'Register zsh as default shell' do
-  command "sudo chsh -s /bin/zsh #{user}"
-  user user
+  command "chsh -s /bin/zsh #{user}"
 end

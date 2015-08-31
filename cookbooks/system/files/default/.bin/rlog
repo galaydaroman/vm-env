@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+logfile=$1
+archive="$logfile.$(date +%Y%m%d%H%M%S)"
+
+# copy log file for archiving
+cp $logfile $archive
+
+# clear current log file
+echo '' > $logfile
+
+# compression archive
+gzip -9 $archive
+

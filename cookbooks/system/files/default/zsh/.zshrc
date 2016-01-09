@@ -85,13 +85,13 @@ fi
 # Custom settings
 PATH=$PATH:$HOME/.bin
 
-export HEADLESS='true'
+# export HEADLESS='true'
+# export RUBYGEMS_GEMDEPS='-'
+# export CHROME_RAILS_PANEL='true'
 export DISPLAY=':99'
 export QT_SELECT='qt5-x86_64-linux-gnu'
 export LANGUAGE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
-# export RUBYGEMS_GEMDEPS='-'
-# export CHROME_RAILS_PANEL='true'
 
 alias sdev='screen -U -S dev -t dev -fn -L bundle exec guard'
 alias sdevmisc='screen -U -S dev -t dev -fn -L bundle exec guard -g default misc'
@@ -100,3 +100,5 @@ alias s='screen -r puma'
 alias sd='screen -r dev'
 alias ss='syn && s'
 
+alias sdev121='screen -U -S 121 -t 121 -fn -L bundle exec guard'
+alias s121='screen -r 121'

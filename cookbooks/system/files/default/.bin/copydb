@@ -5,5 +5,3 @@ db_source=$1
 socket='/var/run/mysqld/mysqld.sock'
 
 mysqldump -uroot --protocol=socket -S $socket $db_source | mysql -uroot --protocol=socket -S $socket $db_dest
-
-

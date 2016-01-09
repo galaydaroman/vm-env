@@ -1,11 +1,16 @@
 user = node[:system][:user]
 
-directory node[:fuse][:path] do
-  owner user
-  group user
-  mode 0755
-  recursive true
-  action :create
+[
+  node[:fuse][:path],
+  node[:fuse][:projects_path]
+].each do |folder|
+  directory folder do
+    owner user
+    group user
+    mode 0755
+    recursive false
+    action :create
+  end
 end
 
 execute 'Sync project to VM' do

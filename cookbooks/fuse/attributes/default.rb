@@ -1,5 +1,6 @@
 user = node[:system][:user]
 
+default[:fuse][:projects_path] = "/home/#{user}/projects"
 default[:fuse][:path] = "/home/#{user}/projects/fusetube"
 default[:fuse][:shared_path] = "/home/#{user}/fusetube"
 default[:fuse][:qt_version] = 'qt5-x86_64-linux-gnu'

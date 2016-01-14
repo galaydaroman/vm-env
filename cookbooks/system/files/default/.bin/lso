@@ -1,4 +1,3 @@
-for f in $(ls -a $*); do 
-  stat -c "%a %n" $f
+for f in $(ls -a $@); do
+  stat -c "%a %n" "$f"
 done
-

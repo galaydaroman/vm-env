@@ -1,7 +1,17 @@
 #!/bin/bash
 
-db_dest=$2
-db_source=$1
 socket='/var/run/mysqld/mysqld.sock'
+db_source="$1"
+db_dest="$2"
 
-mysqldump -uroot --protocol=socket -S $socket $db_source | mysql -uroot --protocol=socket -S $socket $db_dest
+if [[ -z $db_dest ]]; then
+  mysqldump -uroot --protocol=socket -S $socket $db_source | gzip --stdout --best
+else
+  if [[ -f $db_source ]]; then
+    echo "Restore DB dump..."
+    gzip --decompress --stdout --keep $db_source | mysql -uroot --protocol=socket -S $socket $db_dest
+  else
+    echo "Copying from DB to DB..."
+    mysqldump -uroot --protocol=socket -S $socket $db_source | mysql -uroot --protocol=socket -S $socket $db_dest
+  fi
+fi

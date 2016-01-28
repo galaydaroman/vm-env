@@ -1,3 +1,4 @@
 backup
 .vagrant*
 ssh/
+dump/

@@ -21,6 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # within the machine from a port on the host machine.
   config.vm.network "forwarded_port", guest: 3000, host: 3000
   config.vm.network "forwarded_port", guest: 3002, host: 3002
+  config.vm.network "forwarded_port", guest: 9293, host: 9293
   config.vm.network "forwarded_port", guest: 9292, host: 9292
   config.vm.network "forwarded_port", guest: 9291, host: 9291
 

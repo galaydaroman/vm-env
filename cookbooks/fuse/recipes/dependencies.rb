@@ -1,3 +1,1 @@
-node[:fuse][:packages].each do |name|
-  package name
-end
+node[:fuse][:packages].each &method(:package)

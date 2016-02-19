@@ -1,3 +1,1 @@
-for f in $(ls -a $@); do
-  stat -c "%a %n" "$f"
-done
+ls -a $* | xargs -i stat -c "%a %n" ${*:-'.'}/{}

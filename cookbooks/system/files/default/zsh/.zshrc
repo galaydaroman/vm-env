@@ -93,6 +93,8 @@ export QT_SELECT='qt5-x86_64-linux-gnu'
 export LANGUAGE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
+alias ls='ls -X --color=auto'
+
 alias sdev='screen -U -S dev -t dev -fn -L bundle exec guard'
 alias sdevmisc='screen -U -S dev -t dev -fn -L bundle exec guard -g default misc'
 alias sweb='screen -U -S puma -t web -fn -L bundle exec rails s puma'

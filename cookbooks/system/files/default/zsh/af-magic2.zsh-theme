@@ -16,7 +16,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 # primary prompt
 # PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
 PROMPT='$FG[032]%~\
-$(git_prompt_info) \
+$(git_prompt_info2) \
 $FG[105]%(!.#.»)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
@@ -34,3 +34,18 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%} | $my_orange"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="$FG[034]*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+
+# Outputs current branch info in prompt format
+function git_prompt_info2() {
+  local ref
+  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+    full_ref=${ref#refs/heads/}
+    if [[ ${#full_ref} > 50 ]]; then
+      full_ref="${full_ref:0:33}.."
+    fi
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX$full_ref$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
+}
+

@@ -55,6 +55,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.name = 'vm-fuse-env'
     vb.cpus = 4
     vb.memory = 6200
+    vb.customize ['modifyvm', :id, '--paravirtprovider', 'kvm']
 
     # Don't boot with headless mode
     # vb.gui = true

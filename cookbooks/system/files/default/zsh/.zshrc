@@ -104,3 +104,6 @@ alias ss='syn && s'
 
 alias sdev121='screen -U -S 121 -t 121 -fn -L bundle exec guard'
 alias s121='screen -r 121'
+
+alias syn2='syn :121'
+alias syn3='syn :reports'

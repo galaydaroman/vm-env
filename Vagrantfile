@@ -20,6 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
   config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 3001, host: 3001
   config.vm.network "forwarded_port", guest: 3002, host: 3002
   config.vm.network "forwarded_port", guest: 9293, host: 9293
   config.vm.network "forwarded_port", guest: 9292, host: 9292
@@ -44,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   config.vm.synced_folder "../fusetube", "/home/vagrant/fusetube"
   config.vm.synced_folder "../121",      "/home/vagrant/121"
+  config.vm.synced_folder "../reports",  "/home/vagrant/reports"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.

@@ -1,9 +1,6 @@
 user = node[:system][:user]
 
-[
-  node[:fuse][:path],
-  node[:fuse][:projects_path]
-].each do |folder|
+[node[:fuse][:projects_path], node[:fuse][:path]].each do |folder|
   directory folder do
     owner user
     group user

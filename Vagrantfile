@@ -19,12 +19,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
-  config.vm.network "forwarded_port", guest: 3001, host: 3001
-  config.vm.network "forwarded_port", guest: 3002, host: 3002
-  config.vm.network "forwarded_port", guest: 9293, host: 9293
-  config.vm.network "forwarded_port", guest: 9292, host: 9292
-  config.vm.network "forwarded_port", guest: 9291, host: 9291
+  %w(3000 3001 3002 9291 9292 9293).map(&:to_i).each do |port|
+    config.vm.network "forwarded_port", guest: port, host: port
+  end
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -64,8 +61,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision 'chef_solo' do |chef|
-    chef.version = '12.3.0'
-
     chef.add_recipe 'system'
     chef.add_recipe 'xvfb'
     chef.add_recipe 'rvm::user'

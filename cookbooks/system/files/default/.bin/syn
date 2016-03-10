@@ -52,7 +52,7 @@ if [ ! $out_sync ]; then
   source_to="/$custom_path"
   from="${rsync_base}/${rsync_prj}/${source_from}"
   to="$rsync_dup/$rsync_prj${source_to}"
-  perm='--no-p --no-g --chmod=ugo=rwX'
+  perm='--no-p --no-g --no-o --chmod=ugo=rwX'
 else
   from="${rsync_dup}/${rsync_prj}"
   to="$rsync_base"

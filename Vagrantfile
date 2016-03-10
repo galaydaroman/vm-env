@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
-  %w(3000:80 3001 3002 9291 9292 9293).each do |ports|
+  %w(3100).each do |ports|
     guest, host = ports.split ':'
     host ||= guest
     config.vm.network "forwarded_port", guest: guest, host: host
@@ -42,18 +42,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "../fusetube", "/home/vagrant/fusetube"
-  config.vm.synced_folder "../121",      "/home/vagrant/121"
-  config.vm.synced_folder "../reports",  "/home/vagrant/reports"
+  config.vm.synced_folder "../bfb", "/home/vagrant/bfb"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
   config.vm.provider "virtualbox" do |vb|
-    vb.name = 'vm-fuse-env'
-    vb.cpus = 4
-    vb.memory = 6200
+    vb.name = 'vm-bfb-env'
+    vb.cpus = 2
+    vb.memory = 4000
     vb.customize ['modifyvm', :id, '--paravirtprovider', 'kvm']
 
     # Don't boot with headless mode
@@ -66,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'system'
     chef.add_recipe 'xvfb'
     chef.add_recipe 'rvm::user'
-    chef.add_recipe 'fuse'
+    chef.add_recipe 'project'
 
     chef.json = {
       rvm: {

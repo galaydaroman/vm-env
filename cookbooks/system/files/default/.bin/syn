@@ -22,7 +22,7 @@ for param; do
   fi
 done
 
-rsync_prj=${custom_project:-fusetube}
+rsync_prj=${custom_project:-bfb}
 rsync_base=$HOME
 rsync_dup="$HOME/projects"
 rsync_opt=(

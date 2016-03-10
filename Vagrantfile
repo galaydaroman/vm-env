@@ -15,12 +15,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
-  config.vm.box_check_update = true
+  config.vm.box_check_update = false
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
-  %w(3000 3001 3002 9291 9292 9293).map(&:to_i).each do |port|
-    config.vm.network "forwarded_port", guest: port, host: port
+  %w(3000:80 3001 3002 9291 9292 9293).each do |ports|
+    guest, host = ports.split ':'
+    host ||= guest
+    config.vm.network "forwarded_port", guest: guest, host: host
   end
 
   # Create a private network, which allows host-only access to the machine

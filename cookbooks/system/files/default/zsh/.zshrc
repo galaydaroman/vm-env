@@ -93,6 +93,10 @@ export QT_SELECT='qt5-x86_64-linux-gnu'
 export LANGUAGE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
+# webkit global configures
+export WEBKIT_MEMORY_LIMIT='880803840' # 840 MB
+export WEBKIT_MEMORY_VERBOSE=true
+
 alias ls='ls -X --color=auto'
 
 alias sdev='screen -U -S dev -t dev -fn -L bundle exec guard'

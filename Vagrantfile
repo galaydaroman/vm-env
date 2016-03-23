@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
-  %w(3100).each do |ports|
+  %w(3000 9999 8080).each do |ports|
     guest, host = ports.split ':'
     host ||= guest
     config.vm.network "forwarded_port", guest: guest, host: host
@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
+  # config.vm.network "private_network", ip: "192.168.56.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -51,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.name = 'vm-bfb-env'
     vb.cpus = 2
-    vb.memory = 4000
+    vb.memory = 4400
     vb.customize ['modifyvm', :id, '--paravirtprovider', 'kvm']
 
     # Don't boot with headless mode

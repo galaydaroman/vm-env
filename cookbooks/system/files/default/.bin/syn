@@ -26,24 +26,17 @@ rsync_prj=${custom_project:-bfb}
 rsync_base=$HOME
 rsync_dup="$HOME/projects"
 rsync_opt=(
-  /screenlog.*
-  vendor/assets/bower_components
+  bower_components
+  node_modules
+  dist
   log/*.*
-  images/reflective-*.png
-  icons/content-*.png
-  icons/transparent-content-*.png
-  icons/colour-content-*.png
-  solr/data
-  solr/pids
-  companies/201*.css.scss
   tmp/**
   *.sqlite3
   :memory*
-  /.idea
-  coverage/**
-  public/system/**
+  coverage/
+  public/uploads/**
   public/assets/**
-  .screenlog.*
+  screenlog.*
   .tag*
 )
 
@@ -59,5 +52,5 @@ else
 fi
 
 unset out_sync;
-exclude_options=$(for i in ${rsync_opt[@]}; do echo -n "--exclude '$i' "; done)
+exclude_options=$(for i in ${rsync_opt[@]}; do echo -n "--exclude $i "; done)
 rsync -$def_param $perm --delete $exclude_options $from $to

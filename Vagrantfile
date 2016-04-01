@@ -50,8 +50,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     vb.name = 'vm-bfb-env'
-    vb.cpus = 2
-    vb.memory = 4400
+    vb.cpus = 3
+    vb.memory = 4200
     vb.customize ['modifyvm', :id, '--paravirtprovider', 'kvm']
 
     # Don't boot with headless mode

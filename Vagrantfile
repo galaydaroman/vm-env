@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
-  %w(3000 9999 8080).each do |ports|
+  %w(3000).each do |ports|
     guest, host = ports.split ':'
     host ||= guest
     config.vm.network "forwarded_port", guest: guest, host: host
@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.56.10"
+  config.vm.network "private_network", ip: "192.168.56.56"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -42,17 +42,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "../bfb", "/home/vagrant/bfb"
+  config.vm.synced_folder "../8b", "/home/vagrant/8b", type: 'nfs'
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
   config.vm.provider "virtualbox" do |vb|
-    vb.name = 'vm-bfb-env'
-    vb.cpus = 3
-    vb.memory = 4200
+    vb.name = 'vm-enova'
+    vb.cpus = 4
+    vb.memory = 5200
     vb.customize ['modifyvm', :id, '--paravirtprovider', 'kvm']
+    vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
 
     # Don't boot with headless mode
     # vb.gui = true
@@ -63,22 +64,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision 'chef_solo' do |chef|
     chef.add_recipe 'system'
     chef.add_recipe 'xvfb'
-    chef.add_recipe 'rvm::user'
-    chef.add_recipe 'project'
+    # chef.add_recipe 'rvm::user'
+    chef.add_recipe 'project::dependencies'
 
-    chef.json = {
-      rvm: {
-        user_installs: [
-          user: 'vagrant',
-          default_ruby: '2.1.2',
-          rvm_gem_options: '--no-rdoc --no-ri',
-          rvmrc: {
-            rvm_trust_rvmrcs_flag: 1,
-            rvm_always_trust_rvmrc_flag: 1,
-            rvm_install_on_use_flag: 1
-          }
-        ]
-      }
-    }
+    # chef.json = {
+    #   rvm: {
+    #     user_installs: [
+    #       user: 'vagrant',
+    #       default_ruby: '2.1.2',
+    #       rvm_gem_options: '--no-rdoc --no-ri',
+    #       rvmrc: {
+    #         rvm_trust_rvmrcs_flag: 1,
+    #         rvm_always_trust_rvmrc_flag: 1,
+    #         rvm_install_on_use_flag: 1
+    #       }
+    #     ]
+    #   }
+    # }
   end
 end

@@ -1,4 +1,5 @@
 backup
 .vagrant*
 ssh/
+cookbooks/system/files/default/ssh
 dump/

@@ -1,8 +1,8 @@
 user = node[:system][:user]
 
 default[:project_name][:projects_path] = "/home/#{user}/projects"
-default[:project_name][:path] = "/home/#{user}/projects/bfb"
-default[:project_name][:shared_path] = "/home/#{user}/bfb"
+default[:project_name][:path] = "/home/#{user}/projects/8b"
+default[:project_name][:shared_path] = "/home/#{user}/8b"
 default[:project_name][:qt_version] = 'qt5-x86_64-linux-gnu'
 default[:project_name][:packages] = %w(
   libssl-dev
@@ -13,7 +13,6 @@ default[:project_name][:packages] = %w(
   libicu-dev
   libmagic-dev
   libqt5webkit5 libqt5webkit5-dev
-  mysql-server
   nodejs nodejs-legacy
   npm
   imagemagick
